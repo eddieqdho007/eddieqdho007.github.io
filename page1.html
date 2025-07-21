@@ -24,6 +24,7 @@
             height: 40px;
             background-color: white;
             text-align: center;
+            font-size: 18px;
             color: black;
             border-bottom: 1px solid rgba(0, 0, 0, 0.4);
             z-index: 999;
@@ -76,6 +77,7 @@
             border-left: 1px solid rgba(0, 0, 0, 0.4);
             border-right: 1px solid rgba(0, 0, 0, 0.4);
             background-color: white;
+            font-size: 20px;
         }
 
         .pertanyaan {
@@ -198,6 +200,7 @@
             white-space: normal;
             overflow-wrap: break-word;
             min-width: 0;
+            font-size: 20px;
         }
 
         .footer-button {
@@ -243,7 +246,7 @@
         .teks-jawaban,
         .lingkaran,
         .deskripsi-soal {
-            font-size: 17px;
+            font-size: 20px;
             line-height: 1.4;
         }
 
@@ -272,7 +275,7 @@
             padding: 15px;
             background-color: white;
             border: 1px solid #cacaca;
-            font-size: 17px;
+            font-size: 20px;
             line-height: 1.5;
         }
 
@@ -370,14 +373,22 @@
             border: 1px solid #2c2c2c;
             border-radius: 8px;
             background-color: white;
+            font-size: 20px;
+        }
+
+        .review-option-content {
+            font-size: 20px;
+            line-height: 1.5;
         }
 
         .review-question-content {
             margin-bottom: 15px;
+            font-size: 20px;
         }
 
         .review-options {
             margin-top: 15px;
+            font-size: 20px;
         }
 
         .review-option {
@@ -387,6 +398,7 @@
             margin-bottom: 5px;
             border-radius: 4px;
             border: 1px solid #ddd;
+            font-size: 20px;
         }
 
         .review-option.correct {
@@ -411,17 +423,20 @@
             margin-right: 10px;
             font-weight: bold;
             background-color: #f5f5f5;
+            font-size: 20px;
         }
 
         .review-option.correct .review-option-number,
         .review-option.correct.user-selected .review-option-number {
             background-color: #4CAF50;
             color: white;
+            font-size: 20px;
         }
 
         .review-option.user-selected .review-option-number {
             background-color: #f44336;
             color: white;
+            font-size: 20px;
         }
 
         .review-audio-btn {
@@ -476,7 +491,7 @@
             padding: 10px;
             background-color: #f8f9fa;
             border-left: 3px solid #6eb0f1;
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.5;
             color: #333;
             border-radius: 0 4px 4px 0;
@@ -626,7 +641,7 @@
         @media (max-width: 768px) {
             .footer-button button {
                 width: 150px;
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .review-question {
@@ -642,7 +657,7 @@
         @media (max-width: 480px) {
             .footer-button button {
                 width: 120px;
-                font-size: 12px;
+                font-size: 16px;
             }
 
             .question-list-grid {
@@ -820,7 +835,6 @@
                 }))
             };
 
-            // Tambahkan contoh soal spesifik
             quizData.questions[0] = {
                 id: 1,
                 section: "Reading",
@@ -1363,7 +1377,7 @@
                             content = option.value || '';
                         }
                     } else {
-                            content = option || '';
+                        content = option || '';
                     }
 
                     return `
@@ -1573,7 +1587,6 @@
             sectionsContainer.style.gap = '30px';
             sectionsContainer.style.justifyContent = 'center';
 
-            // Reading Section (1-20)
             const readingSection = document.createElement('div');
             readingSection.style.flex = '1';
 
@@ -1597,7 +1610,6 @@
             readingSection.appendChild(readingGrid);
             sectionsContainer.appendChild(readingSection);
 
-            // Listening Section (21-40)
             const listeningSection = document.createElement('div');
             listeningSection.style.flex = '1';
 
@@ -1780,7 +1792,7 @@
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 20px;
-                margin-left: 100px;
+                margin-left: 20px;
                 padding-bottom: 10px;
                 border-bottom: 1px solid #eee;
             `;
@@ -1792,7 +1804,7 @@
             reviewOverlay.appendChild(header);
 
             const questionsContainer = document.createElement('div');
-            questionsContainer.style.maxWidth = '600px';
+            questionsContainer.style.maxWidth = '750px';
             questionsContainer.style.margin = '0 auto';
 
             for (let i = 1; i <= totalQuestions; i++) {
@@ -1825,7 +1837,7 @@
                 const questionNumber = document.createElement('h3');
                 questionNumber.textContent = `Question ${i}`;
                 questionNumber.style.margin = '0';
-                questionNumber.style.color = '#333';
+                questionNumber.style.color = 'white';
 
                 const answerStatus = document.createElement('span');
                 if (userAnswers[i]) {
@@ -1869,14 +1881,14 @@
                 if (questionData.textBox) {
                     const textBoxDiv = document.createElement('div');
                     textBoxDiv.className = 'text-box';
-                    textBoxDiv.textContent = questionData.textBox;
+                    textBoxDiv.innerHTML = questionData.textBox;
                     questionContent.appendChild(textBoxDiv);
                 }
 
                 if (questionData.textBox2) {
                     const textBox2Div = document.createElement('div');
                     textBox2Div.className = 'text-box-2';
-                    textBox2Div.textContent = questionData.textBox2;
+                    textBox2Div.innerHTML = questionData.textBox2;
                     questionContent.appendChild(textBox2Div);
                 }
 
@@ -1925,6 +1937,7 @@
                                 const optionImage = document.createElement('img');
                                 optionImage.src = options[j].value;
                                 optionImage.className = 'review-image';
+                                optionContent.className = 'review-option-content';
                                 optionImage.alt = `Option ${j + 1}`;
                                 optionImage.style.cursor = 'pointer';
                                 optionImage.onclick = (e) => {
