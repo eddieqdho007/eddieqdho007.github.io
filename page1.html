@@ -1941,10 +1941,10 @@
                                 break;
 
                             default:
-                                optionContent.textContent = options[j].value || '';
+                                optionContent.innerHTML = options[j].value || '';
                         }
                     } else {
-                        optionContent.textContent = options[j] || '';
+                        optionContent.innerHTML = options[j] || '';
                     }
 
                     optionDiv.appendChild(optionContent);
