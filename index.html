@@ -10,8 +10,8 @@
       --primary-color: rgb(255, 255, 255);
       --secondary-color: #f8f9fa;
       --hover-color: #e8eaf3;
-      --text-color: #333;
-      --light-text: #6c757d;
+      --text-color: rgb(7, 7, 7);
+      --light-text: #363636;
     }
 
     * {
@@ -26,7 +26,7 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      background-color: #f5f7ff;
+      background: linear-gradient(45deg, #FCFDFD, #20516B);
       color: var(--text-color);
       text-align: center;
       padding: 30px 5px;
@@ -35,11 +35,8 @@
     .container {
       width: 100%;
       max-width: 500px;
-      background-color: white;
-      border: 1px solid rgb(228, 228, 228);
-      border-radius: 16px;
+      background-color: transparent;
       padding: 25px 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
       height: 90vh;
@@ -77,9 +74,9 @@
       justify-content: center;
       font-size: 1.2rem;
       font-weight: 600;
-      background-color: var(--primary-color);
-      color: rgb(97, 97, 97);
-      border: 1px solid rgb(221, 219, 219);
+      background-color: transparent;
+      color: rgb(32, 32, 32);
+      border: 1px solid #333;
       border-radius: 10px;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -100,10 +97,9 @@
       margin-top: auto;
       color: var(--light-text);
       font-size: 0.8rem;
-      padding-top: 15px;
+      padding-top: 20px;
     }
-
-    /* Scrollbar styling */
+    
     .scrollable-buttons::-webkit-scrollbar {
       width: 6px;
     }
@@ -133,11 +129,11 @@
     }
 
     .garis-1 {
-      border-top: 1px solid #ccc;
+      border-top: 1px solid #333;
     }
 
     .garis-2 {
-      border-top: 1px solid #ccc;
+      border-top: 1px solid #333;
     }
   </style>
 </head>
