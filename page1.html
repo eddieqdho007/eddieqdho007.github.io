@@ -1975,6 +1975,9 @@
                 font-size: 16px;
             `;
             closeBtn.onclick = () => {
+                if (reviewOverlay && reviewOverlay.parentNode) {
+                reviewOverlay.parentNode.removeChild(reviewOverlay);
+                }
                 window.location.replace('index.html');
             };
             closeBtnContainer.appendChild(closeBtn);
