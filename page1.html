@@ -1975,9 +1975,7 @@
                 font-size: 16px;
             `;
             closeBtn.onclick = () => {
-                if (window.Android) {
-                    window.Android.closeWebView();
-                }
+                window.location.href = 'index.html';
             };
             closeBtnContainer.appendChild(closeBtn);
             questionsContainer.appendChild(closeBtnContainer);
