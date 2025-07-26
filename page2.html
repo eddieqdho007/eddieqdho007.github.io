@@ -984,11 +984,11 @@
 
             "37": "여 : 주문할게요. 김밥이랑 라면 주세요.<br>남 : 네, 알겠습니다. 라면은 안 매운 라면과 매운 라면이 있어요.<br>여 : 매운 걸로 주세요.",
 
-            "38": "남 : 손님, 찾으시는 물건이 있나요?<br>여 : 네, 이 CD 두 개 다 세일하는 거죠? 꼭 사고 싶단 건데 사려고 일부러 여기까지 왔어요.<br>남 : 네, 세일하고 있어요. 이 가수 좋아하시나 봐요. 여기에 이 가수의 사진을 만든 달력이 있는데 보셨어요?<br>여 : 와 정말 멋지네요. 얼마죠?<br>남 : 달력은 10,000 원이에요.<br>여 : 그럼 CD 를 한 장만 사고 달력을 살래요.<br>남 : 그러세요. 안 사실 CD 를 저한테 주세면 제자리에 갖다 둘게요.",
+            "38": "남 : 손님, 찾으시는 물건이 있나요?<br>여 : 네, 이 CD 두 개 다 세일하는 거죠? 꼭 사고 싶단 건데 사려고 일부러 여기까지 왔어요.<br>남 : 네, 세일하고 있어요. 이 가수 좋아하시나 봐요. 여기에 이 가수의 사진으로 만든 달력이 있는데 보셨어요?<br>여 : 와 정말 멋지네요. 얼마죠?<br>남 : 달력은 10,000 원이에요.<br>여 : 그럼 CD 를 한 장만 사고 저 달력을 살래요.<br>남 : 그러세요. 안 사실 CD 를 저한테 주세면 제자리에 갖다 둘게요.",
 
-            "39": "여 : 이 공원 어때요? 조용하고 깨끗하요? 집 앞에 아런 공원이 있는 줄 몰랐어요.<br>남 : 저도 정말 마음에 들어요. 시간 있을 때 나와서 운동해야겠네요. 혹시 공원에 운동 긱구도 있나요?<br>여 : 네, 공원 뒤에 운동 기구도 새로 생겼어요.<br>남 : 그래요? 그럼 그쪽으로 가요.",
+            "39": "여 : 이 공원 어때요? 조용하고 깨끗하죠? 집 앞에 이렇게 정원이 공원이 있는 줄 몰랐어요.<br>남 : 저도 정말 마음에 들어요. 시간 있을 때 나와서 운동해야겠네요. 혹시 공원에 운동기구 도 있나요?<br>여 : 네, 공원 뒤에 운동 기구도 새로 생겼어요.<br>남 : 그래요? 그럼 그쪽으로 가요.",
 
-            "40": "여 : 어서 오세요 손님, 원하는 머리 모양이 있으세요?<br>여 : 이 사진을 한번 보세요. 요즘은 이런 머리를 많이 해요. 유명한 연예인이 드라마에서 이 머리를 하고 나왔는데 그래서 인기가 많아요.<br>남 : 괜찮네요, 이렇게 해 주세요.",
+            "40": "여 : 어서 오세요 손님, 원하는 머리 모양이 있으세요?<br>남 : 아니요, 잘 모르겠어요 저 한테 오똔깨 어울릴까요.<br>여 : 이 사진을 한번 보세요. 요즘은 이런 머리를 많이 해요. 유명한 연예인이 드라마에서 이 머리를 하고 나왔는데 그래서 인기가 많아요.<br>남 : 괜찮네요, 이렇게 해 주세요.",
         };
 
         async function loadAudioTranscripts() {
@@ -1755,51 +1755,53 @@
             questionListOverlay.style.position = 'fixed';
             questionListOverlay.style.top = '0';
             questionListOverlay.style.left = '0';
-            questionListOverlay.style.width = '100vw';
-            questionListOverlay.style.height = '100vh';
+            questionListOverlay.style.width = '100%';
+            questionListOverlay.style.height = '100%';
             questionListOverlay.style.backgroundColor = 'white';
             questionListOverlay.style.display = 'flex';
             questionListOverlay.style.justifyContent = 'center';
             questionListOverlay.style.alignItems = 'center';
             questionListOverlay.style.zIndex = '10000';
+            questionListOverlay.style.overflow = 'auto';
+            questionListOverlay.style.boxSizing = 'border-box';
+            questionListOverlay.style.padding = '20px';
 
             const questionListContainer = document.createElement('div');
             questionListContainer.style.backgroundColor = 'white';
             questionListContainer.style.padding = '10px';
             questionListContainer.style.border = 'none';
+            questionListContainer.style.width = '100%';
             questionListContainer.style.maxWidth = '800px';
             questionListContainer.style.maxHeight = '90vh';
             questionListContainer.style.overflowY = 'auto';
             questionListContainer.style.display = 'flex';
             questionListContainer.style.flexDirection = 'column';
-
-            const mainTitle = document.createElement('h2');
-            mainTitle.textContent = 'Question List';
-            mainTitle.style.textAlign = 'center';
-            mainTitle.style.marginTop = '2px';
-            mainTitle.style.marginBottom = '2px';
-            mainTitle.style.color = '#333';
-            questionListContainer.appendChild(mainTitle);
+            questionListContainer.style.boxSizing = 'border-box';
 
             const sectionsContainer = document.createElement('div');
             sectionsContainer.style.display = 'flex';
             sectionsContainer.style.gap = '30px';
             sectionsContainer.style.justifyContent = 'center';
 
+            sectionsContainer.style.flexDirection = 'row';
+
             const readingSection = document.createElement('div');
             readingSection.style.flex = '1';
 
-            const readingTitle = document.createElement('h3');
+            const readingTitle = document.createElement('h4');
             readingTitle.textContent = 'Reading (1-20)';
             readingTitle.style.textAlign = 'center';
             readingTitle.style.marginBottom = '15px';
-            readingTitle.style.color = '#2c7be5';
+            readingTitle.style.color = '#333';
             readingSection.appendChild(readingTitle);
 
             const readingGrid = document.createElement('div');
             readingGrid.style.display = 'grid';
             readingGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
+            readingGrid.style.gridTemplateRows = 'repeat(4, 1fr)';
             readingGrid.style.gap = '10px';
+            readingGrid.style.width = '100%';
+            readingGrid.style.justifyItems = 'center';
 
             for (let i = 1; i <= 20; i++) {
                 const questionBtn = createQuestionButton(i);
@@ -1812,18 +1814,21 @@
             const listeningSection = document.createElement('div');
             listeningSection.style.flex = '1';
 
-            const listeningTitle = document.createElement('h3');
+            const listeningTitle = document.createElement('h4');
             listeningTitle.textContent = 'Listening (21-40)';
             listeningTitle.style.textAlign = 'center';
             listeningTitle.style.marginBottom = '15px';
-            listeningTitle.style.color = '#2c7be5';
+            listeningTitle.style.color = '#333';
             listeningSection.appendChild(listeningTitle);
 
             const listeningGrid = document.createElement('div');
             listeningGrid.style.display = 'grid';
             listeningGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
+            listeningGrid.style.gridTemplateRows = 'repeat(4, 1fr)';
             listeningGrid.style.gap = '10px';
-
+            listeningGrid.style.width = '100%';
+            listeningGrid.style.justifyItems = 'center';
+            
             for (let i = 21; i <= 40; i++) {
                 const questionBtn = createQuestionButton(i);
                 listeningGrid.appendChild(questionBtn);
@@ -1844,6 +1849,8 @@
             closeBtn.style.border = 'none';
             closeBtn.style.borderRadius = '4px';
             closeBtn.style.cursor = 'pointer';
+            closeBtn.style.width = '100%';
+            closeBtn.style.maxWidth = '80px';
             closeBtn.onclick = function () {
                 document.body.removeChild(questionListOverlay);
             };
