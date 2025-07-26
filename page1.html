@@ -1778,14 +1778,6 @@
             questionListContainer.style.flexDirection = 'column';
             questionListContainer.style.boxSizing = 'border-box';
 
-            const mainTitle = document.createElement('h2');
-            mainTitle.textContent = 'Question List';
-            mainTitle.style.textAlign = 'center';
-            mainTitle.style.marginTop = '2px';
-            mainTitle.style.marginBottom = '2px';
-            mainTitle.style.color = '#333';
-            questionListContainer.appendChild(mainTitle);
-
             const sectionsContainer = document.createElement('div');
             sectionsContainer.style.display = 'flex';
             sectionsContainer.style.gap = '30px';
@@ -1796,11 +1788,11 @@
             const readingSection = document.createElement('div');
             readingSection.style.flex = '1';
 
-            const readingTitle = document.createElement('h3');
+            const readingTitle = document.createElement('h4');
             readingTitle.textContent = 'Reading (1-20)';
             readingTitle.style.textAlign = 'center';
             readingTitle.style.marginBottom = '15px';
-            readingTitle.style.color = '#2c7be5';
+            readingTitle.style.color = '#333';
             readingSection.appendChild(readingTitle);
 
             const readingGrid = document.createElement('div');
@@ -1822,11 +1814,11 @@
             const listeningSection = document.createElement('div');
             listeningSection.style.flex = '1';
 
-            const listeningTitle = document.createElement('h3');
+            const listeningTitle = document.createElement('h4');
             listeningTitle.textContent = 'Listening (21-40)';
             listeningTitle.style.textAlign = 'center';
             listeningTitle.style.marginBottom = '15px';
-            listeningTitle.style.color = '#2c7be5';
+            listeningTitle.style.color = '#333';
             listeningSection.appendChild(listeningTitle);
 
             const listeningGrid = document.createElement('div');
@@ -1858,7 +1850,7 @@
             closeBtn.style.borderRadius = '4px';
             closeBtn.style.cursor = 'pointer';
             closeBtn.style.width = '100%';
-            closeBtn.style.maxWidth = '200px';
+            closeBtn.style.maxWidth = '80px';
             closeBtn.onclick = function () {
                 document.body.removeChild(questionListOverlay);
             };
