@@ -984,11 +984,11 @@
 
             "37": "여 : 여보세요, 민수 씨 지금 뭐 하세요?<br>남 : 누워서 텔레비전을 보고 있어요.",
 
-            "38": "여 : 안녕하세요. 게시판에 보고 전화 드렸어요. 방에 어떤 것 들이 있나요?<br>남 : 네, 방에는 침대, 에어컨, 책상이 있어요. 컴퓨터는 있다면 인터넷은 무료고요.<br>여 : 인터넷이 무료라니 좋고요. 그러면 화장실은 따로 있나요?<br>남 : 당연하지요. 방마다 화장실이 하나씩 따로 있고 거기에서 셔워도 할 수 있어요. 직접 와서 조세요. 보시면 분명 마음에 들게요.",
+            "38": "여 : 안녕하세요. 게시판을 보고 전화 드렸어요. 방에 어떤 것 들이 있나요?<br>남 : 네, 방에는 침대, 에어컨, 책상이 있어요. 컴퓨터는 있다면 인터넷은 무료고요.<br>여 : 인터넷이 무료라니 좋나요. 그러면 화장실은 따로 있나요?<br>남 : 당연하지요. 방마다 화장실이 하나씩 따로 있고 거기에서 샤워도 할 수 있어요. 직접 와서 보세요. 보시면 분명 마음에 들거예요.",
 
             "39": "여 : 여보세요 준수 씨, 제가 조금 늦을 것 같아요.<br>남 : 그래요?  얼마나 늦는데요?<br>여 : 30 분 정도요. 정말 죄송해요. 늦잠을 잤어요.<br>남 : 괜찮아요. 그럼 30 분 늦게 1 시 반에 만나요.",
 
-            "40": "남 : 제주도에는 처음 왔어요. 정말 아름답네요.<br>여 : 그렇죠? 그럼 이제 제주도에 맛있는 음식을 먹으러 가요.<br>남 : 벌써 시간이 많이 지났네요. 그래요, 빨리 밥 먹으러 가요.",
+            "40": "남 : 제주도에는 처음 왔어요. 정말 아름답네요.<br>여 : 그렇죠? 그럼 이제 제주도에 맛있는 음식을 먹으러 가요.<br>남 : 어! 벌써 시간이 많이 지났네요. 그래요, 빨리 밥 먹으러 가요.",
         };
 
         async function loadAudioTranscripts() {
@@ -1755,23 +1755,28 @@
             questionListOverlay.style.position = 'fixed';
             questionListOverlay.style.top = '0';
             questionListOverlay.style.left = '0';
-            questionListOverlay.style.width = '100vw';
-            questionListOverlay.style.height = '100vh';
+            questionListOverlay.style.width = '100%';
+            questionListOverlay.style.height = '100%';
             questionListOverlay.style.backgroundColor = 'white';
             questionListOverlay.style.display = 'flex';
             questionListOverlay.style.justifyContent = 'center';
             questionListOverlay.style.alignItems = 'center';
             questionListOverlay.style.zIndex = '10000';
+            questionListOverlay.style.overflow = 'auto';
+            questionListOverlay.style.boxSizing = 'border-box';
+            questionListOverlay.style.padding = '20px';
 
             const questionListContainer = document.createElement('div');
             questionListContainer.style.backgroundColor = 'white';
             questionListContainer.style.padding = '10px';
             questionListContainer.style.border = 'none';
+            questionListContainer.style.width = '100%';
             questionListContainer.style.maxWidth = '800px';
             questionListContainer.style.maxHeight = '90vh';
             questionListContainer.style.overflowY = 'auto';
             questionListContainer.style.display = 'flex';
             questionListContainer.style.flexDirection = 'column';
+            questionListContainer.style.boxSizing = 'border-box';
 
             const mainTitle = document.createElement('h2');
             mainTitle.textContent = 'Question List';
@@ -1786,6 +1791,8 @@
             sectionsContainer.style.gap = '30px';
             sectionsContainer.style.justifyContent = 'center';
 
+            sectionsContainer.style.flexDirection = 'row';
+
             const readingSection = document.createElement('div');
             readingSection.style.flex = '1';
 
@@ -1799,7 +1806,10 @@
             const readingGrid = document.createElement('div');
             readingGrid.style.display = 'grid';
             readingGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
+            readingGrid.style.gridTemplateRows = 'repeat(4, 1fr)';
             readingGrid.style.gap = '10px';
+            readingGrid.style.width = '100%';
+            readingGrid.style.justifyItems = 'center';
 
             for (let i = 1; i <= 20; i++) {
                 const questionBtn = createQuestionButton(i);
@@ -1822,8 +1832,11 @@
             const listeningGrid = document.createElement('div');
             listeningGrid.style.display = 'grid';
             listeningGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
+            listeningGrid.style.gridTemplateRows = 'repeat(4, 1fr)';
             listeningGrid.style.gap = '10px';
-
+            listeningGrid.style.width = '100%';
+            listeningGrid.style.justifyItems = 'center';
+            
             for (let i = 21; i <= 40; i++) {
                 const questionBtn = createQuestionButton(i);
                 listeningGrid.appendChild(questionBtn);
@@ -1844,6 +1857,8 @@
             closeBtn.style.border = 'none';
             closeBtn.style.borderRadius = '4px';
             closeBtn.style.cursor = 'pointer';
+            closeBtn.style.width = '100%';
+            closeBtn.style.maxWidth = '200px';
             closeBtn.onclick = function () {
                 document.body.removeChild(questionListOverlay);
             };
