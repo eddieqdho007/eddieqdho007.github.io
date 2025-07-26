@@ -986,9 +986,9 @@
 
             "38": "남 : 고객 여러분께 안내 말씀드리겠습니다.1 층 안내 대스크에서 다섯 살 여자 아이를 드리고 있습니다. 이름은 이 수지이고 빨간색 티셔츠와 하얀색 바지를 입고 있습니다. 이 수지 어린의 부모님께서는 지금 바로 1 층에 안내 대스크로 와 주시기 바랍니다. 감사합니다.",
 
-            "39": "여 : 여보세요, 거기 한국 미술관이지요?<br>남 : 네, 무엇을 도와 드릴까요?<br>여 : 제가 지금 미술관으로 가고 있는데 어디 있는지 모르겠어요. 설명해 좀 주세요.<br>남 : 어디에 계신데요?<br>여 : 연동역 2 번 출구로 나와서 첫번째 골목에서 오른쪽으로 들어왔어요.<br>남 : 그럼 조금만 더 오시다가 왼쪽에 꽃집이 보이면 그 골목으로 들어오시면 됩니다.",
+            "39": "여 : 여보세요, 거기 한국 미술관이지요?<br>남 : 네, 무엇을 도와 드릴까요?<br>여 : 제가 지금 미술관으로 가고 있는데 어디 있는지 모르겠어요. 설명을 좀 해주세요.<br>남 : 지금 어디에 계신데요?<br>여 : 명동역 2 번 출구로 나와서 첫번째 골목에서 오른쪽으로 들어왔어요.<br>남 : 그럼 조금만 더 오시다가 왼쪽에 꽃집이 보이면 그 골목으로 들어오시면 됩니다.",
 
-            "40": "남 : 안녕하세요. 1 시에 예약한 김 준수입니다.<br>남 : 며칠 동안 잠을 잘 못 자고 하루 종일 머리가 아파요. 혹시 큰 문제가 있는 건 아닌지 걱정돼서 왔어요.<br>여 : 드시고 있는 약이 있나요 ?<br>남 : 머리가 아플 때가 두통약을 먹기는 하는데 많이 먹지는 않아요.<br>여 : 그렇군요. 스트레스를 받아서 그럴 수도 있고 요즘 날씨가 더워서 그럴 수도 있으니 너무 걱정은 마세요. 그리고 우선 검사를 해 봐야겠네요.",
+            "40": "남 : 안녕하세요. 1 시에 예약한 김 준수입니다.<br>여 : 네, 이쪽에 앉으세요. 어디가 안 좋아서 오셨나요?<br>남 : 며칠 동안 잠을 잘 못 자고 하루 종일 머리가 아파요. 혹시 큰 문제가 있는 건 아닌지 걱정돼서 왔어요.<br>여 : 드시고 있는 약이 있나요 ?<br>남 : 머리가 아플 때가 두통약을 먹기는 하는데 많이 먹지는 않아요.<br>여 : 그렇군요. 스트레스를 받아서 그럴 수도 있고 요즘 날씨가 더워서 그럴 수도 있으니 너무 걱정은 마세요. 그래도 우선 검사를 해 봐야겠네요.",
         };
 
         async function loadAudioTranscripts() {
@@ -1765,51 +1765,53 @@
             questionListOverlay.style.position = 'fixed';
             questionListOverlay.style.top = '0';
             questionListOverlay.style.left = '0';
-            questionListOverlay.style.width = '100vw';
-            questionListOverlay.style.height = '100vh';
+            questionListOverlay.style.width = '100%';
+            questionListOverlay.style.height = '100%';
             questionListOverlay.style.backgroundColor = 'white';
             questionListOverlay.style.display = 'flex';
             questionListOverlay.style.justifyContent = 'center';
             questionListOverlay.style.alignItems = 'center';
             questionListOverlay.style.zIndex = '10000';
+            questionListOverlay.style.overflow = 'auto';
+            questionListOverlay.style.boxSizing = 'border-box';
+            questionListOverlay.style.padding = '20px';
 
             const questionListContainer = document.createElement('div');
             questionListContainer.style.backgroundColor = 'white';
             questionListContainer.style.padding = '10px';
             questionListContainer.style.border = 'none';
+            questionListContainer.style.width = '100%';
             questionListContainer.style.maxWidth = '800px';
             questionListContainer.style.maxHeight = '90vh';
             questionListContainer.style.overflowY = 'auto';
             questionListContainer.style.display = 'flex';
             questionListContainer.style.flexDirection = 'column';
-
-            const mainTitle = document.createElement('h2');
-            mainTitle.textContent = 'Question List';
-            mainTitle.style.textAlign = 'center';
-            mainTitle.style.marginTop = '2px';
-            mainTitle.style.marginBottom = '2px';
-            mainTitle.style.color = '#333';
-            questionListContainer.appendChild(mainTitle);
+            questionListContainer.style.boxSizing = 'border-box';
 
             const sectionsContainer = document.createElement('div');
             sectionsContainer.style.display = 'flex';
             sectionsContainer.style.gap = '30px';
             sectionsContainer.style.justifyContent = 'center';
 
+            sectionsContainer.style.flexDirection = 'row';
+
             const readingSection = document.createElement('div');
             readingSection.style.flex = '1';
 
-            const readingTitle = document.createElement('h3');
+            const readingTitle = document.createElement('h4');
             readingTitle.textContent = 'Reading (1-20)';
             readingTitle.style.textAlign = 'center';
             readingTitle.style.marginBottom = '15px';
-            readingTitle.style.color = '#2c7be5';
+            readingTitle.style.color = '#333';
             readingSection.appendChild(readingTitle);
 
             const readingGrid = document.createElement('div');
             readingGrid.style.display = 'grid';
             readingGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
+            readingGrid.style.gridTemplateRows = 'repeat(4, 1fr)';
             readingGrid.style.gap = '10px';
+            readingGrid.style.width = '100%';
+            readingGrid.style.justifyItems = 'center';
 
             for (let i = 1; i <= 20; i++) {
                 const questionBtn = createQuestionButton(i);
@@ -1822,18 +1824,21 @@
             const listeningSection = document.createElement('div');
             listeningSection.style.flex = '1';
 
-            const listeningTitle = document.createElement('h3');
+            const listeningTitle = document.createElement('h4');
             listeningTitle.textContent = 'Listening (21-40)';
             listeningTitle.style.textAlign = 'center';
             listeningTitle.style.marginBottom = '15px';
-            listeningTitle.style.color = '#2c7be5';
+            listeningTitle.style.color = '#333';
             listeningSection.appendChild(listeningTitle);
 
             const listeningGrid = document.createElement('div');
             listeningGrid.style.display = 'grid';
             listeningGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
+            listeningGrid.style.gridTemplateRows = 'repeat(4, 1fr)';
             listeningGrid.style.gap = '10px';
-
+            listeningGrid.style.width = '100%';
+            listeningGrid.style.justifyItems = 'center';
+            
             for (let i = 21; i <= 40; i++) {
                 const questionBtn = createQuestionButton(i);
                 listeningGrid.appendChild(questionBtn);
@@ -1854,6 +1859,8 @@
             closeBtn.style.border = 'none';
             closeBtn.style.borderRadius = '4px';
             closeBtn.style.cursor = 'pointer';
+            closeBtn.style.width = '100%';
+            closeBtn.style.maxWidth = '80px';
             closeBtn.onclick = function () {
                 document.body.removeChild(questionListOverlay);
             };
