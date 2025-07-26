@@ -34,17 +34,16 @@
 
     .container {
       width: 100%;
-      max-width: 500px;
+      max-width: 1200px;
       background-color: transparent;
-      padding: 25px 15px;
+      padding: 40px 25px 15px;
       display: flex;
       flex-direction: column;
       height: 90vh;
-      overflow: hidden;
     }
 
     h1 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-bottom: 20px;
       color: var(--text-color);
       font-weight: 600;
@@ -67,7 +66,7 @@
 
     .buttons-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
       gap: 10px;
       width: 100%;
       margin-bottom: 10px;
@@ -75,11 +74,14 @@
     }
 
     .btn {
-      aspect-ratio: 1/1;
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 600;
       background-color: transparent;
       color: rgb(32, 32, 32);
@@ -87,7 +89,14 @@
       border-radius: 10px;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(74, 107, 255, 0.2);
+      box-shadow: 0 2px 8px rgba(118, 120, 128, 0.2);
+    }
+    
+    .btn span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .btn:hover {
@@ -106,7 +115,7 @@
       font-size: 0.8rem;
       padding-top: 20px;
     }
-    
+
     .scrollable-buttons::-webkit-scrollbar {
       width: 6px;
     }
@@ -125,22 +134,59 @@
       background: #a8a8a8;
     }
 
-    @media (max-width: 350px) {
-      .buttons-grid {
-        gap: 8px;
-      }
-
-      .btn {
-        font-size: 1rem;
-      }
-    }
-
     .garis-1 {
       border-top: 1px solid #333;
     }
 
     .garis-2 {
       border-top: 1px solid #333;
+    }
+
+    @media (max-width: 350px) {
+      .buttons-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+      
+      .btn {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 351px) and (max-width: 600px) {
+      .buttons-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+    }
+
+    @media (min-width: 601px) and (max-width: 768px) {
+      .buttons-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 12px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .buttons-grid {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 12px;
+      }
+      
+      .btn {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .buttons-grid {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 15px;
+      }
+      
+      .btn {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -152,106 +198,106 @@
 
     <div class="scrollable-buttons">
       <div class="buttons-grid">
-        <button class="btn" onclick="window.location.href='page1.html'">1</button>
-        <button class="btn" onclick="window.location.href='page2.html'">2</button>
-        <button class="btn" onclick="window.location.href='page3.html'">3</button>
-        <button class="btn" onclick="window.location.href='page4.html'">4</button>
-        <button class="btn" onclick="window.location.href='page5.html'">5</button>
-        <button class="btn" onclick="window.location.href='page6.html'">6</button>
-        <button class="btn" onclick="window.location.href='page7.html'">7</button>
-        <button class="btn" onclick="window.location.href='page8.html'">8</button>
-        <button class="btn" onclick="window.location.href='page9.html'">9</button>
-        <button class="btn" onclick="window.location.href='page10.html'">10</button>
-        <button class="btn" onclick="window.location.href='page11.html'">11</button>
-        <button class="btn" onclick="window.location.href='page12.html'">12</button>
-        <button class="btn" onclick="window.location.href='page13.html'">13</button>
-        <button class="btn" onclick="window.location.href='page14.html'">14</button>
-        <button class="btn" onclick="window.location.href='page15.html'">15</button>
-        <button class="btn" onclick="window.location.href='page16.html'">16</button>
-        <button class="btn" onclick="window.location.href='page17.html'">17</button>
-        <button class="btn" onclick="window.location.href='page18.html'">18</button>
-        <button class="btn" onclick="window.location.href='page19.html'">19</button>
-        <button class="btn" onclick="window.location.href='page20.html'">20</button>
-        <button class="btn" onclick="window.location.href='page21.html'">21</button>
-        <button class="btn" onclick="window.location.href='page22.html'">22</button>
-        <button class="btn" onclick="window.location.href='page23.html'">23</button>
-        <button class="btn" onclick="window.location.href='page24.html'">24</button>
-        <button class="btn" onclick="window.location.href='page25.html'">25</button>
-        <button class="btn" onclick="window.location.href='page26.html'">26</button>
-        <button class="btn" onclick="window.location.href='page27.html'">27</button>
-        <button class="btn" onclick="window.location.href='page28.html'">28</button>
-        <button class="btn" onclick="window.location.href='page29.html'">29</button>
-        <button class="btn" onclick="window.location.href='page30.html'">30</button>
-        <button class="btn" onclick="window.location.href='page31.html'">31</button>
-        <button class="btn" onclick="window.location.href='page32.html'">32</button>
-        <button class="btn" onclick="window.location.href='page33.html'">33</button>
-        <button class="btn" onclick="window.location.href='page34.html'">34</button>
-        <button class="btn" onclick="window.location.href='page35.html'">35</button>
-        <button class="btn" onclick="window.location.href='page36.html'">36</button>
-        <button class="btn" onclick="window.location.href='page37.html'">37</button>
-        <button class="btn" onclick="window.location.href='page38.html'">38</button>
-        <button class="btn" onclick="window.location.href='page39.html'">39</button>
-        <button class="btn" onclick="window.location.href='page40.html'">40</button>
-        <button class="btn" onclick="window.location.href='page41.html'">41</button>
-        <button class="btn" onclick="window.location.href='page42.html'">42</button>
-        <button class="btn" onclick="window.location.href='page43.html'">43</button>
-        <button class="btn" onclick="window.location.href='page44.html'">44</button>
-        <button class="btn" onclick="window.location.href='page45.html'">45</button>
-        <button class="btn" onclick="window.location.href='page46.html'">46</button>
-        <button class="btn" onclick="window.location.href='page47.html'">47</button>
-        <button class="btn" onclick="window.location.href='page48.html'">48</button>
-        <button class="btn" onclick="window.location.href='page49.html'">49</button>
-        <button class="btn" onclick="window.location.href='page50.html'">50</button>
-        <button class="btn" onclick="window.location.href='page51.html'">51</button>
-        <button class="btn" onclick="window.location.href='page52.html'">52</button>
-        <button class="btn" onclick="window.location.href='page53.html'">53</button>
-        <button class="btn" onclick="window.location.href='page54.html'">54</button>
-        <button class="btn" onclick="window.location.href='page55.html'">55</button>
-        <button class="btn" onclick="window.location.href='page56.html'">56</button>
-        <button class="btn" onclick="window.location.href='page57.html'">57</button>
-        <button class="btn" onclick="window.location.href='page58.html'">58</button>
-        <button class="btn" onclick="window.location.href='page59.html'">59</button>
-        <button class="btn" onclick="window.location.href='page60.html'">60</button>
-        <button class="btn" onclick="window.location.href='page61.html'">61</button>
-        <button class="btn" onclick="window.location.href='page62.html'">62</button>
-        <button class="btn" onclick="window.location.href='page63.html'">63</button>
-        <button class="btn" onclick="window.location.href='page64.html'">64</button>
-        <button class="btn" onclick="window.location.href='page65.html'">65</button>
-        <button class="btn" onclick="window.location.href='page66.html'">66</button>
-        <button class="btn" onclick="window.location.href='page67.html'">67</button>
-        <button class="btn" onclick="window.location.href='page68.html'">68</button>
-        <button class="btn" onclick="window.location.href='page69.html'">69</button>
-        <button class="btn" onclick="window.location.href='page70.html'">70</button>
-        <button class="btn" onclick="window.location.href='page71.html'">71</button>
-        <button class="btn" onclick="window.location.href='page72.html'">72</button>
-        <button class="btn" onclick="window.location.href='page73.html'">73</button>
-        <button class="btn" onclick="window.location.href='page74.html'">74</button>
-        <button class="btn" onclick="window.location.href='page75.html'">75</button>
-        <button class="btn" onclick="window.location.href='page76.html'">76</button>
-        <button class="btn" onclick="window.location.href='page77.html'">77</button>
-        <button class="btn" onclick="window.location.href='page78.html'">78</button>
-        <button class="btn" onclick="window.location.href='page79.html'">79</button>
-        <button class="btn" onclick="window.location.href='page80.html'">80</button>
-        <button class="btn" onclick="window.location.href='page81.html'">81</button>
-        <button class="btn" onclick="window.location.href='page82.html'">82</button>
-        <button class="btn" onclick="window.location.href='page83.html'">83</button>
-        <button class="btn" onclick="window.location.href='page84.html'">84</button>
-        <button class="btn" onclick="window.location.href='page85.html'">85</button>
-        <button class="btn" onclick="window.location.href='page86.html'">86</button>
-        <button class="btn" onclick="window.location.href='page87.html'">87</button>
-        <button class="btn" onclick="window.location.href='page88.html'">88</button>
-        <button class="btn" onclick="window.location.href='page89.html'">89</button>
-        <button class="btn" onclick="window.location.href='page90.html'">90</button>
-        <button class="btn" onclick="window.location.href='page91.html'">91</button>
-        <button class="btn" onclick="window.location.href='page92.html'">92</button>
-        <button class="btn" onclick="window.location.href='page93.html'">93</button>
-        <button class="btn" onclick="window.location.href='page94.html'">94</button>
-        <button class="btn" onclick="window.location.href='page95.html'">95</button>
-        <button class="btn" onclick="window.location.href='page96.html'">96</button>
-        <button class="btn" onclick="window.location.href='page97.html'">97</button>
-        <button class="btn" onclick="window.location.href='page98.html'">98</button>
-        <button class="btn" onclick="window.location.href='page99.html'">99</button>
-        <button class="btn" onclick="window.location.href='page100.html'">100</button>
+        <button class="btn" onclick="window.location.href='page1.html'"><span>1</span></button>
+        <button class="btn" onclick="window.location.href='page2.html'"><span>2</span></button>
+        <button class="btn" onclick="window.location.href='page3.html'"><span>3</span></button>
+        <button class="btn" onclick="window.location.href='page4.html'"><span>4</span></button>
+        <button class="btn" onclick="window.location.href='page5.html'"><span>5</span></button>
+        <button class="btn" onclick="window.location.href='page6.html'"><span>6</span></button>
+        <button class="btn" onclick="window.location.href='page7.html'"><span>7</span></button>
+        <button class="btn" onclick="window.location.href='page8.html'"><span>8</span></button>
+        <button class="btn" onclick="window.location.href='page9.html'"><span>9</span></button>
+        <button class="btn" onclick="window.location.href='page10.html'"><span>10</span></button>
+        <button class="btn" onclick="window.location.href='page11.html'"><span>11</span></button>
+        <button class="btn" onclick="window.location.href='page12.html'"><span>12</span></button>
+        <button class="btn" onclick="window.location.href='page13.html'"><span>13</span></button>
+        <button class="btn" onclick="window.location.href='page14.html'"><span>14</span></button>
+        <button class="btn" onclick="window.location.href='page15.html'"><span>15</span></button>
+        <button class="btn" onclick="window.location.href='page16.html'"><span>16</span></button>
+        <button class="btn" onclick="window.location.href='page17.html'"><span>17</span></button>
+        <button class="btn" onclick="window.location.href='page18.html'"><span>18</span></button>
+        <button class="btn" onclick="window.location.href='page19.html'"><span>19</span></button>
+        <button class="btn" onclick="window.location.href='page20.html'"><span>20</span></button>
+        <button class="btn" onclick="window.location.href='page21.html'"><span>21</span></button>
+        <button class="btn" onclick="window.location.href='page22.html'"><span>22</span></button>
+        <button class="btn" onclick="window.location.href='page23.html'"><span>23</span></button>
+        <button class="btn" onclick="window.location.href='page24.html'"><span>24</span></button>
+        <button class="btn" onclick="window.location.href='page25.html'"><span>25</span></button>
+        <button class="btn" onclick="window.location.href='page26.html'"><span>26</span></button>
+        <button class="btn" onclick="window.location.href='page27.html'"><span>27</span></button>
+        <button class="btn" onclick="window.location.href='page28.html'"><span>28</span></button>
+        <button class="btn" onclick="window.location.href='page29.html'"><span>29</span></button>
+        <button class="btn" onclick="window.location.href='page30.html'"><span>30</span></button>
+        <button class="btn" onclick="window.location.href='page31.html'"><span>31</span></button>
+        <button class="btn" onclick="window.location.href='page32.html'"><span>32</span></button>
+        <button class="btn" onclick="window.location.href='page33.html'"><span>33</span></button>
+        <button class="btn" onclick="window.location.href='page34.html'"><span>34</span></button>
+        <button class="btn" onclick="window.location.href='page35.html'"><span>35</span></button>
+        <button class="btn" onclick="window.location.href='page36.html'"><span>36</span></button>
+        <button class="btn" onclick="window.location.href='page37.html'"><span>37</span></button>
+        <button class="btn" onclick="window.location.href='page38.html'"><span>38</span></button>
+        <button class="btn" onclick="window.location.href='page39.html'"><span>39</span></button>
+        <button class="btn" onclick="window.location.href='page40.html'"><span>40</span></button>
+        <button class="btn" onclick="window.location.href='page41.html'"><span>41</span></button>
+        <button class="btn" onclick="window.location.href='page42.html'"><span>42</span></button>
+        <button class="btn" onclick="window.location.href='page43.html'"><span>43</span></button>
+        <button class="btn" onclick="window.location.href='page44.html'"><span>44</span></button>
+        <button class="btn" onclick="window.location.href='page45.html'"><span>45</span></button>
+        <button class="btn" onclick="window.location.href='page46.html'"><span>46</span></button>
+        <button class="btn" onclick="window.location.href='page47.html'"><span>47</span></button>
+        <button class="btn" onclick="window.location.href='page48.html'"><span>48</span></button>
+        <button class="btn" onclick="window.location.href='page49.html'"><span>49</span></button>
+        <button class="btn" onclick="window.location.href='page50.html'"><span>50</span></button>
+        <button class="btn" onclick="window.location.href='page51.html'"><span>51</span></button>
+        <button class="btn" onclick="window.location.href='page52.html'"><span>52</span></button>
+        <button class="btn" onclick="window.location.href='page53.html'"><span>53</span></button>
+        <button class="btn" onclick="window.location.href='page54.html'"><span>54</span></button>
+        <button class="btn" onclick="window.location.href='page55.html'"><span>55</span></button>
+        <button class="btn" onclick="window.location.href='page56.html'"><span>56</span></button>
+        <button class="btn" onclick="window.location.href='page57.html'"><span>57</span></button>
+        <button class="btn" onclick="window.location.href='page58.html'"><span>58</span></button>
+        <button class="btn" onclick="window.location.href='page59.html'"><span>59</span></button>
+        <button class="btn" onclick="window.location.href='page60.html'"><span>60</span></button>
+        <button class="btn" onclick="window.location.href='page61.html'"><span>61</span></button>
+        <button class="btn" onclick="window.location.href='page62.html'"><span>62</span></button>
+        <button class="btn" onclick="window.location.href='page63.html'"><span>63</span></button>
+        <button class="btn" onclick="window.location.href='page64.html'"><span>64</span></button>
+        <button class="btn" onclick="window.location.href='page65.html'"><span>65</span></button>
+        <button class="btn" onclick="window.location.href='page66.html'"><span>66</span></button>
+        <button class="btn" onclick="window.location.href='page67.html'"><span>67</span></button>
+        <button class="btn" onclick="window.location.href='page68.html'"><span>68</span></button>
+        <button class="btn" onclick="window.location.href='page69.html'"><span>69</span></button>
+        <button class="btn" onclick="window.location.href='page70.html'"><span>70</span></button>
+        <button class="btn" onclick="window.location.href='page71.html'"><span>71</span></button>
+        <button class="btn" onclick="window.location.href='page72.html'"><span>72</span></button>
+        <button class="btn" onclick="window.location.href='page73.html'"><span>73</span></button>
+        <button class="btn" onclick="window.location.href='page74.html'"><span>74</span></button>
+        <button class="btn" onclick="window.location.href='page75.html'"><span>75</span></button>
+        <button class="btn" onclick="window.location.href='page76.html'"><span>76</span></button>
+        <button class="btn" onclick="window.location.href='page77.html'"><span>77</span></button>
+        <button class="btn" onclick="window.location.href='page78.html'"><span>78</span></button>
+        <button class="btn" onclick="window.location.href='page79.html'"><span>79</span></button>
+        <button class="btn" onclick="window.location.href='page80.html'"><span>80</span></button>
+        <button class="btn" onclick="window.location.href='page81.html'"><span>81</span></button>
+        <button class="btn" onclick="window.location.href='page82.html'"><span>82</span></button>
+        <button class="btn" onclick="window.location.href='page83.html'"><span>83</span></button>
+        <button class="btn" onclick="window.location.href='page84.html'"><span>84</span></button>
+        <button class="btn" onclick="window.location.href='page85.html'"><span>85</span></button>
+        <button class="btn" onclick="window.location.href='page86.html'"><span>86</span></button>
+        <button class="btn" onclick="window.location.href='page87.html'"><span>87</span></button>
+        <button class="btn" onclick="window.location.href='page88.html'"><span>88</span></button>
+        <button class="btn" onclick="window.location.href='page89.html'"><span>89</span></button>
+        <button class="btn" onclick="window.location.href='page90.html'"><span>90</span></button>
+        <button class="btn" onclick="window.location.href='page91.html'"><span>91</span></button>
+        <button class="btn" onclick="window.location.href='page92.html'"><span>92</span></button>
+        <button class="btn" onclick="window.location.href='page93.html'"><span>93</span></button>
+        <button class="btn" onclick="window.location.href='page94.html'"><span>94</span></button>
+        <button class="btn" onclick="window.location.href='page95.html'"><span>95</span></button>
+        <button class="btn" onclick="window.location.href='page96.html'"><span>96</span></button>
+        <button class="btn" onclick="window.location.href='page97.html'"><span>97</span></button>
+        <button class="btn" onclick="window.location.href='page98.html'"><span>98</span></button>
+        <button class="btn" onclick="window.location.href='page99.html'"><span>99</span></button>
+        <button class="btn" onclick="window.location.href='page100.html'"><span>100</span></button>
       </div>
     </div>
 
