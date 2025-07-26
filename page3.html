@@ -6,13 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Quiz 40 Questions</title>
     <style>
-        html,
-        body {
+        :root {
+            --primary-color: #6eb0f1;
+            --correct-color: #4CAF50;
+            --incorrect-color: #f44336;
+            --warning-color: #ff9800;
+            --text-color: #1a1a1a;
+            --light-gray: #f5f5f5;
+            --border-color: rgba(0, 0, 0, 0.4);
+            --header-height: 40px;
+            --footer-height: 40px;
+            --base-font-size: 20px;
+            --mobile-font-size: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html,
+        body {
             width: 100%;
             height: 100%;
             overflow: hidden;
+            font-family: Arial, sans-serif;
+            font-size: var(--base-font-size);
+            color: var(--text-color);
         }
 
         .header-bar {
@@ -21,12 +42,12 @@
             position: fixed;
             top: 0;
             width: 100%;
-            height: 40px;
+            height: var(--header-height);
             background-color: white;
             text-align: center;
-            font-size: 18px;
+            font-size: var(--base-font-size);
             color: black;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid var(--border-color);
             z-index: 999;
         }
 
@@ -34,24 +55,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-right: 1px solid rgba(0, 0, 0, 0.4);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .header-bar div:nth-child(1),
+        .header-bar div:nth-child(2),
+        .header-bar div:nth-child(4) {
+            background-color: #0000001a;
         }
 
         .header-bar div:nth-child(1) {
-            background-color: #0000001a;
-            border-left: 1px solid rgba(0, 0, 0, 0.4);
-        }
-
-        .header-bar div:nth-child(2) {
-            background-color: #0000001a;
+            border-left: 1px solid var(--border-color);
         }
 
         .header-bar div:nth-child(3) {
             background-color: #84afbd;
-        }
-
-        .header-bar div:nth-child(4) {
-            background-color: #0000001a;
         }
 
         .header-bar div:nth-child(5) {
@@ -59,25 +77,25 @@
         }
 
         .header-bar div:nth-child(6) {
-            background-color: #6eb0f1de;
+            background-color: var(--primary-color);
         }
 
         .container {
             display: grid;
             grid-template-columns: 55% 45%;
-            margin-top: 40px;
-            height: calc(100vh - 40px);
+            margin-top: var(--header-height);
+            height: calc(100vh - var(--header-height) - var(--footer-height));
         }
 
         .soal,
         .jawaban {
             padding: 5px;
-            padding-bottom: 50px;
+            padding-bottom: var(--footer-height);
             overflow-y: auto;
-            border-left: 1px solid rgba(0, 0, 0, 0.4);
-            border-right: 1px solid rgba(0, 0, 0, 0.4);
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
             background-color: white;
-            font-size: 20px;
+            font-size: var(--base-font-size);
         }
 
         .pertanyaan {
@@ -98,7 +116,7 @@
             margin: 15px auto;
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -140,13 +158,6 @@
             transition: transform 0.25s ease;
         }
 
-        @media (orientation: landscape) {
-            .zoom-area img {
-                max-width: 80vw;
-                max-height: 80vh;
-            }
-        }
-
         .btn-tutup {
             position: absolute;
             top: 16px;
@@ -167,7 +178,7 @@
             display: flex;
             align-items: center;
             padding: 12px 16px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .jawaban-item:last-child {
@@ -186,7 +197,7 @@
             justify-content: center;
             margin-right: 16px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s;
             flex-shrink: 0;
         }
 
@@ -200,29 +211,32 @@
             white-space: normal;
             overflow-wrap: break-word;
             min-width: 0;
-            font-size: 20px;
+            font-size: var(--base-font-size);
         }
 
         .footer-button {
             display: flex;
             justify-content: space-between;
             background-color: #ffffff;
-            border-top: 1px solid rgba(0, 0, 0, 0.4);
+            border-top: 1px solid var(--border-color);
             position: fixed;
             bottom: 0;
             width: 100%;
+            height: var(--footer-height);
         }
 
         .footer-button button {
-            width: 200px;
-            height: 40px;
-            font-size: 18px;
+            flex: 1;
+            max-width: 200px;
+            height: 100%;
+            font-size: var(--base-font-size);
             border: none;
-            border-left: 1px solid rgba(0, 0, 0, 0.4);
-            border-right: 1px solid rgba(0, 0, 0, 0.4);
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
             background-color: #0000001a;
             color: black;
             cursor: pointer;
+            transition: background-color 0.2s;
         }
 
         .footer-button button:hover {
@@ -246,7 +260,7 @@
         .teks-jawaban,
         .lingkaran,
         .deskripsi-soal {
-            font-size: 20px;
+            font-size: var(--base-font-size);
             line-height: 1.4;
         }
 
@@ -262,7 +276,6 @@
 
         .deskripsi-soal {
             line-height: 1.5;
-            color: none;
             margin: 10px;
             background-color: white;
         }
@@ -275,7 +288,7 @@
             padding: 15px;
             background-color: white;
             border: 1px solid #cacaca;
-            font-size: 20px;
+            font-size: var(--base-font-size);
             line-height: 1.5;
         }
 
@@ -373,22 +386,22 @@
             border: 1px solid #2c2c2c;
             border-radius: 8px;
             background-color: white;
-            font-size: 20px;
+            font-size: var(--base-font-size);
         }
 
         .review-option-content {
-            font-size: 20px;
+            font-size: var(--base-font-size);
             line-height: 1.5;
         }
 
         .review-question-content {
             margin-bottom: 15px;
-            font-size: 20px;
+            font-size: var(--base-font-size);
         }
 
         .review-options {
             margin-top: 15px;
-            font-size: 20px;
+            font-size: var(--base-font-size);
         }
 
         .review-option {
@@ -398,7 +411,7 @@
             margin-bottom: 5px;
             border-radius: 4px;
             border: 1px solid #ddd;
-            font-size: 20px;
+            font-size: var(--base-font-size);
         }
 
         .review-option.correct {
@@ -423,20 +436,20 @@
             margin-right: 10px;
             font-weight: bold;
             background-color: #f5f5f5;
-            font-size: 20px;
+            font-size: var(--base-font-size);
         }
 
         .review-option.correct .review-option-number,
         .review-option.correct.user-selected .review-option-number {
-            background-color: #4CAF50;
+            background-color: var(--correct-color);
             color: white;
-            font-size: 20px;
+            font-size: var(--base-font-size);
         }
 
         .review-option.user-selected .review-option-number {
-            background-color: #f44336;
+            background-color: var(--incorrect-color);
             color: white;
-            font-size: 20px;
+            font-size: var(--base-font-size);
         }
 
         .review-audio-btn {
@@ -474,7 +487,7 @@
 
         .close-result-btn {
             padding: 10px 20px;
-            background-color: #6eb0f1;
+            background-color: var(--primary-color);
             color: white;
             border: none;
             border-radius: 5px;
@@ -490,7 +503,7 @@
             margin-top: 10px;
             padding: 10px;
             background-color: #f8f9fa;
-            border-left: 3px solid #6eb0f1;
+            border-left: 3px solid var(--primary-color);
             font-size: 18px;
             line-height: 1.5;
             color: #333;
@@ -536,12 +549,12 @@
         }
 
         .custom-dialog-confirm {
-            background-color: #6eb0f1;
+            background-color: var(--primary-color);
             color: white;
         }
 
         .custom-dialog-cancel {
-            background-color: #f44336;
+            background-color: var(--incorrect-color);
             color: white;
         }
 
@@ -576,7 +589,7 @@
         .progress-bar {
             height: 100%;
             width: 0%;
-            background-color: #6eb0f1;
+            background-color: var(--primary-color);
             border-radius: 2px;
         }
 
@@ -613,7 +626,7 @@
             height: 40px;
             border-radius: 5px;
             border: 1px solid #ddd;
-            background-color: #f5f5f5;
+            background-color: var(--light-gray);
             cursor: pointer;
             font-weight: bold;
             transition: all 0.2s;
@@ -624,54 +637,236 @@
         }
 
         .question-list-btn.current {
-            background-color: #6eb0f1;
+            background-color: var(--primary-color);
             color: white;
         }
 
         .question-list-btn.answered {
-            background-color: #4CAF50;
+            background-color: var(--correct-color);
             color: white;
         }
 
         .question-list-btn.unanswered {
-            background-color: #f44336;
+            background-color: var(--incorrect-color);
             color: white;
         }
 
-        @media (max-width: 768px) {
-            .footer-button button {
-                width: 150px;
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 50% 50%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header-bar {
                 font-size: 16px;
             }
 
+            .pertanyaan img,
+            .jawaban-gambar,
+            .review-image {
+                max-width: 70%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --base-font-size: 18px;
+            }
+
+            .container {
+                grid-template-columns: 100%;
+                grid-template-rows: auto auto;
+                height: auto;
+            }
+
+            .soal,
+            .jawaban {
+                height: auto;
+                max-height: 50vh;
+                padding-bottom: 20px;
+            }
+
+            .footer-button button {
+                font-size: var(--mobile-font-size);
+                max-width: 150px;
+            }
+
             .review-question {
-                margin: 30px 20px;
+                margin: 20px;
                 padding: 30px;
             }
 
             .question-list-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
+
+            .pertanyaan img,
+            .jawaban-gambar,
+            .review-image {
+                max-width: 80%;
+            }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 576px) {
+            :root {
+                --header-height: 50px;
+                --footer-height: 50px;
+            }
+
+            .header-bar {
+                grid-template-columns: 25% 20% 10% 25% 10% 10%;
+                font-size: 14px;
+                height: var(--header-height);
+            }
+
+            .container {
+                margin-top: var(--header-height);
+            }
+
             .footer-button button {
-                width: 120px;
-                font-size: 16px;
+                font-size: 14px;
+                max-width: 120px;
             }
 
             .question-list-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-        }
 
-        @media screen and (orientation: landscape) {
-            .result-overlay {
-                padding: 10px;
+            .pertanyaan img,
+            .jawaban-gambar,
+            .review-image {
+                max-width: 90%;
             }
 
-            .result-content {
-                max-height: 80vh;
+            .text-box,
+            .text-box-2 {
+                max-width: 95%;
+                padding: 10px;
+            }
+        }
+
+        @media screen and (orientation: landscape) and (max-width: 992px) {
+            .container {
+                grid-template-columns: 55% 45%;
+                grid-template-rows: 1fr;
+                height: calc(100vh - var(--header-height) - var(--footer-height));
+            }
+
+            .soal,
+            .jawaban {
+                height: 100%;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .soal {
+                padding-right: 5px;
+            }
+
+            .jawaban {
+                padding-left: 5px;
+            }
+
+            .pertanyaan img,
+            .jawaban-gambar,
+            .review-image {
+                max-width: 80%;
+            }
+
+            .text-box,
+            .text-box-2 {
+                max-width: 90%;
+            }
+        }
+
+        @media screen and (orientation: portrait) and (max-width: 768px) {
+            .container {
+                grid-template-columns: 100%;
+                grid-template-rows: auto auto;
+                height: auto;
+            }
+
+            .soal,
+            .jawaban {
+                height: auto;
+                max-height: 50vh;
+                padding-bottom: 20px;
+            }
+        }
+
+        @media screen and (min-width: 993px) {
+
+            :root {
+                --base-font-size: 24px;
+                --heading-scale: 1.4;
+            }
+
+            body {
+                font-size: var(--base-font-size);
+                line-height: 1.7;
+            }
+
+            .review-question {
+                max-width: 1000px;
+                margin: 40px auto;
+                padding: 40px;
+            }
+
+            .pertanyaan h3 {
+                font-size: calc(var(--base-font-size));
+                margin-bottom: 30px;
+            }
+
+            .pertanyaan p {
+                font-size: calc(var(--base-font-size) * 1.1);
+            }
+
+            .deskripsi-soal {
+                font-size: calc(var(--base-font-size) * 1.1);
+            }
+
+            .text-box,
+            .text-box-2 {
+                font-size: calc(var(--base-font-size) * 1.1);
+                padding: 20px;
+            }
+
+            .teks-jawaban {
+                font-size: calc(var(--base-font-size) * 1.1);
+            }
+
+            .jawaban {
+                font-size: calc(var(--base-font-size) * 1.1);
+            }
+
+            .footer-button button {
+                font-size: calc(var(--base-font-size) * 0.9);
+            }
+
+            .lingkaran {
+                font-size: calc(var(--base-font-size) * 0.9);
+                width: 40px;
+                height: 40px;
+            }
+
+            .review-question-content,
+            .review-option-content {
+                font-size: calc(var(--base-font-size) * 1.1);
+            }
+
+            .review-option {
+                font-size: calc(var(--base-font-size) * 1.1);
+            }
+
+            .review-option-number {
+                font-size: calc(var(--base-font-size) * 1.1);
+                width: 30px;
+                height: 30px;
+            }
+
+            .audio-transcript {
+                font-size: 20px;
             }
         }
 
@@ -699,12 +894,8 @@
     </div>
 
     <div class="container">
-
-        <div class="soal">
-        </div>
-
-        <div class="jawaban">
-        </div>
+        <div class="soal"></div>
+        <div class="jawaban"></div>
     </div>
 
     <div class="footer-button">
@@ -1405,6 +1596,7 @@
                 jawabanDiv.insertAdjacentHTML('beforeend', answerHTML);
             });
         }
+
         function updateCorrectAnswers() {
             quizData.questions.forEach(q => {
                 correctAnswers[q.id] = (q.correctAnswer + 1).toString();
@@ -1522,6 +1714,12 @@
                     });
                 }
             }
+
+            const soalDiv = document.querySelector('.soal');
+            const jawabanDiv = document.querySelector('.jawaban');
+
+            if (soalDiv) soalDiv.scrollTop = 0;
+            if (jawabanDiv) jawabanDiv.scrollTop = 0;
 
             stopAllAudio();
             currentQuestion = questionNumber;
@@ -1794,7 +1992,15 @@
                 background-color: white;
                 overflow-y: auto;
                 z-index: 10000;
-                padding: 5px;
+                padding: 20px 0;
+            `;
+
+            const container = document.createElement('div');
+            container.style.cssText = `
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+                box-sizing: border-box;
             `;
 
             const header = document.createElement('div');
@@ -1802,21 +2008,20 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom: 20px;
-                margin-left: 40px;
-                padding-bottom: 10px;
+                margin-bottom: 30px;
+                padding-bottom: 15px;
                 border-bottom: 1px solid #eee;
             `;
 
             const title = document.createElement('h2');
             title.textContent = 'Review All Answers';
-            title.style.color = '#2c7be5';
+            title.style.cssText = `
+                color: #2c7be5;
+                font-size: 28px;
+                margin: 0;
+            `;
             header.appendChild(title);
-            reviewOverlay.appendChild(header);
-
-            const questionsContainer = document.createElement('div');
-            questionsContainer.style.maxWidth = '750px';
-            questionsContainer.style.margin = '0 auto';
+            container.appendChild(header);
 
             for (let i = 1; i <= totalQuestions; i++) {
                 if (i === 1 || i === 21) {
@@ -1824,31 +2029,39 @@
                     sectionLabel.textContent = i === 1 ? 'Reading Section (1-20)' : 'Listening Section (21-40)';
                     sectionLabel.style.cssText = `
                         color: ${i === 1 ? '#4CAF50' : '#f44336'};
-                        margin-bottom: 15px;
-                        margin-left: 20px;
-                        margin-right: 20px;
-                        padding-bottom: 5px;
+                        margin: 30px 0 20px;
+                        padding-bottom: 10px;
                         border-bottom: 2px solid ${i === 1 ? '#4CAF50' : '#f44336'};
                     `;
-                    questionsContainer.appendChild(sectionLabel);
+                    container.appendChild(sectionLabel);
                 }
 
                 const questionData = quizData.questions.find(q => q.id === i) || {};
                 const questionDiv = document.createElement('div');
-                questionDiv.className = 'review-question';
+                questionDiv.style.cssText = `
+                    background: white;
+                    border: 1px solid #e0e0e0;
+                    border-radius: 8px;
+                    padding: 30px;
+                    margin-bottom: 30px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                    box-sizing: border-box;
+                `;
 
                 const questionHeader = document.createElement('div');
                 questionHeader.style.cssText = `
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    margin-bottom: 15px;
+                    margin-bottom: 20px;
                 `;
 
                 const questionNumber = document.createElement('h3');
                 questionNumber.textContent = `Question ${i}`;
-                questionNumber.style.margin = '0';
-                questionNumber.style.color = 'white';
+                questionNumber.style.cssText = `
+                    color: #333;
+                    margin: 0;
+                `;
 
                 const answerStatus = document.createElement('span');
                 if (userAnswers[i]) {
@@ -1877,7 +2090,8 @@
                     const questionText = document.createElement('p');
                     questionText.style.cssText = `
                         font-weight: bold;
-                        margin-bottom: 10px;
+                        margin-bottom: 15px;
+                        line-height: 1.5;
                     `;
                     questionText.textContent = questionData.question;
                     questionContent.appendChild(questionText);
@@ -1885,6 +2099,10 @@
 
                 if (questionData.description) {
                     const descText = document.createElement('p');
+                    descText.style.cssText = `
+                        margin-bottom: 15px;
+                        line-height: 1.5;
+                    `;
                     descText.textContent = questionData.description;
                     questionContent.appendChild(descText);
                 }
@@ -1892,6 +2110,14 @@
                 if (questionData.textBox) {
                     const textBoxDiv = document.createElement('div');
                     textBoxDiv.className = 'text-box';
+                    textBoxDiv.style.cssText = `
+                        max-width: 90%;
+                        margin: 15px auto;
+                        padding: 15px;
+                        background-color: white;
+                        border: 1px solid #cacaca;
+                        line-height: 1.5;
+                    `;
                     textBoxDiv.innerHTML = questionData.textBox;
                     questionContent.appendChild(textBoxDiv);
                 }
@@ -1899,6 +2125,18 @@
                 if (questionData.textBox2) {
                     const textBox2Div = document.createElement('div');
                     textBox2Div.className = 'text-box-2';
+                    textBox2Div.style.cssText = `
+                        max-width: 90%;
+                        margin: 15px auto;
+                        padding: 15px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        background-color: white;
+                        border: 1px solid #cacaca;
+                        line-height: 1.5;
+                    `;
                     textBox2Div.innerHTML = questionData.textBox2;
                     questionContent.appendChild(textBox2Div);
                 }
@@ -1906,7 +2144,16 @@
                 if (questionData.image) {
                     const questionImage = document.createElement('img');
                     questionImage.src = questionData.image;
-                    questionImage.className = 'review-image';
+                    questionImage.style.cssText = `
+                        display: block;
+                        max-width: 80%;
+                        height: auto;
+                        margin: 20px auto;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: transform 0.2s;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    `;
                     questionImage.onclick = (e) => {
                         e.stopPropagation();
                         e.preventDefault();
@@ -1923,6 +2170,9 @@
 
                 const optionsContainer = document.createElement('div');
                 optionsContainer.className = 'review-options';
+                optionsContainer.style.cssText = `
+                    margin-top: 20px;
+                `;
 
                 const options = questionData.options || ["Option 1", "Option 2", "Option 3", "Option 4"];
                 const correctAnswerIndex = questionData.correctAnswer || 0;
@@ -1931,26 +2181,84 @@
                 for (let j = 0; j < options.length; j++) {
                     const optionDiv = document.createElement('div');
                     optionDiv.className = 'review-option';
-                    if (j === correctAnswerIndex) optionDiv.classList.add('correct');
-                    if (j === userAnswerIndex) optionDiv.classList.add('user-selected');
+                    optionDiv.style.cssText = `
+                        display: flex;
+                        align-items: center;
+                        padding: 12px 15px;
+                        margin-bottom: 8px;
+                        border-radius: 6px;
+                        border: 1px solid #ddd;
+                        transition: all 0.2s;
+                    `;
+
+                    if (j === correctAnswerIndex) {
+                        optionDiv.style.cssText += `
+                            border: 1px solid rgba(0, 0, 0, 0.1);
+                        `;
+                        optionDiv.classList.add('correct');
+                    }
+                    if (j === userAnswerIndex) {
+                        optionDiv.style.cssText += `
+                            background-color: #FFEBEE;
+                        `;
+                        optionDiv.classList.add('user-selected');
+                    }
+                    if (j === correctAnswerIndex && j === userAnswerIndex) {
+                        optionDiv.style.cssText += `
+                            background-color: #E8F5E9;
+                        `;
+                    }
 
                     const optionNumber = document.createElement('div');
                     optionNumber.className = 'review-option-number';
+                    optionNumber.style.cssText = `
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 12px;
+                        font-weight: bold;
+                        background-color: #f5f5f5;
+                    `;
+
+                    if (optionDiv.classList.contains('correct')) {
+                        optionNumber.style.cssText += `
+                            background-color: #4CAF50;
+                            color: white;
+                        `;
+                    }
+                    if (optionDiv.classList.contains('user-selected') && !optionDiv.classList.contains('correct')) {
+                        optionNumber.style.cssText += `
+                            background-color: #f44336;
+                            color: white;
+                        `;
+                    }
+
                     optionNumber.textContent = j + 1;
                     optionDiv.appendChild(optionNumber);
 
                     const optionContent = document.createElement('div');
-                    optionContent.style.flexGrow = '1';
+                    optionContent.style.cssText = `
+                        flex-grow: 1;
+                    `;
 
                     if (typeof options[j] === 'object' && options[j] !== null && options[j].type) {
                         switch (options[j].type) {
                             case 'image':
                                 const optionImage = document.createElement('img');
                                 optionImage.src = options[j].value;
-                                optionImage.className = 'review-image';
-                                optionContent.className = 'review-option-content';
-                                optionImage.alt = `Option ${j + 1}`;
-                                optionImage.style.cursor = 'pointer';
+                                optionImage.style.cssText = `
+                                    max-width: 200px;
+                                    max-height: 120px;
+                                    border-radius: 6px;
+                                    cursor: pointer;
+                                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                                    transition: transform 0.2s;
+                                `;
+                                optionImage.onmouseover = () => optionImage.style.transform = 'scale(1.02)';
+                                optionImage.onmouseout = () => optionImage.style.transform = 'none';
                                 optionImage.onclick = (e) => {
                                     e.stopPropagation();
                                     e.preventDefault();
@@ -1976,38 +2284,39 @@
                 }
 
                 questionDiv.appendChild(optionsContainer);
-                questionsContainer.appendChild(questionDiv);
+                container.appendChild(questionDiv);
             }
 
             const closeBtnContainer = document.createElement('div');
             closeBtnContainer.style.cssText = `
                 display: flex;
                 justify-content: center;
-                margin-top: 30px;
-                margin-bottom: 50px;
+                margin-top: 40px;
+                margin-bottom: 30px;
             `;
 
             const closeBtn = document.createElement('button');
             closeBtn.textContent = 'Close';
             closeBtn.style.cssText = `
                 padding: 12px 24px;
-                background-color: #007bff;
+                background-color: #6eb0f1;
                 color: white;
                 border: none;
-                border-radius: 5px;
+                border-radius: 6px;
                 cursor: pointer;
                 font-size: 16px;
+                font-weight: bold;
+                transition: background-color 0.2s;
             `;
-            closeBtn.onclick = () => {
-                if (reviewOverlay && reviewOverlay.parentNode) {
-                    reviewOverlay.parentNode.removeChild(reviewOverlay);
-                }
+            closeBtn.onmouseover = () => closeBtn.style.backgroundColor = '#5a9bd5';
+            closeBtn.onmouseout = () => closeBtn.style.backgroundColor = '#6eb0f1';
+            closeBtn.addEventListener('click', () => {
                 window.location.replace('index.html');
-            };
-            closeBtnContainer.appendChild(closeBtn);
-            questionsContainer.appendChild(closeBtnContainer);
+            });
 
-            reviewOverlay.appendChild(questionsContainer);
+            closeBtnContainer.appendChild(closeBtn);
+            container.appendChild(closeBtnContainer);
+            reviewOverlay.appendChild(container);
             document.body.appendChild(reviewOverlay);
         }
 
@@ -2100,6 +2409,7 @@
 
             currentAudio.play();
         }
+
         function playJawabanAudio(questionId, optionIndex, audioSrc) {
             if (jawabanAudioPlayCounts[`${questionId}-${optionIndex}`] >= 2) return;
             stopAllAudio();
@@ -2138,6 +2448,7 @@
                 icon.alt = "Play";
             });
         }
+
         function playReviewAudio(audioSrc, button) {
             const audioIcon = button.querySelector('img');
 
