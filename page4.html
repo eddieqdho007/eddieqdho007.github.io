@@ -1834,6 +1834,50 @@
                 readingGrid.appendChild(questionBtn);
             }
 
+            readingSection.appendChild(readingGrid);
+            sectionsContainer.appendChild(readingSection);
+
+            const listeningSection = document.createElement('div');
+            listeningSection.style.flex = '1';
+            listeningSection.style.minWidth = '280px';
+            listeningSection.style.maxWidth = '350px';
+            listeningSection.style.order = '2';
+
+            const listeningTitle = document.createElement('h4');
+            listeningTitle.textContent = 'Listening (21-40)';
+            listeningTitle.style.textAlign = 'center';
+            listeningTitle.style.marginBottom = '15px';
+            listeningTitle.style.color = '#333';
+            listeningSection.appendChild(listeningTitle);
+
+            const listeningGrid = document.createElement('div');
+            listeningGrid.style.display = 'grid';
+            listeningGrid.style.gridTemplateColumns = 'repeat(5, 55px)';
+            listeningGrid.style.gridTemplateRows = 'repeat(4, 50px)';
+            listeningGrid.style.gap = '8px';
+            listeningGrid.style.width = '100%';
+            listeningGrid.style.justifyContent = 'center';
+
+            for (let i = 21; i <= 40; i++) {
+                const questionBtn = createQuestionButton(i);
+                questionBtn.style.width = '55px';
+                questionBtn.style.height = '50px';
+                questionBtn.style.borderRadius = '8px';
+                questionBtn.style.display = 'flex';
+                questionBtn.style.alignItems = 'center';
+                questionBtn.style.justifyContent = 'center';
+                questionBtn.style.boxSizing = 'border-box';
+                listeningGrid.appendChild(questionBtn);
+            }
+
+            listeningSection.appendChild(listeningGrid);
+            sectionsContainer.appendChild(listeningSection);
+
+            questionListContainer.appendChild(sectionsContainer);
+            questionListOverlay.appendChild(questionListContainer);
+            document.body.appendChild(questionListOverlay);
+        }
+
         function createQuestionButton(questionNumber) {
             const questionBtn = document.createElement('button');
             questionBtn.textContent = questionNumber;
