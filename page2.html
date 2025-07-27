@@ -90,7 +90,6 @@
         .soal,
         .jawaban {
             padding: 5px;
-            padding-bottom: var(--footer-height);
             overflow-y: auto;
             border-left: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
@@ -229,7 +228,7 @@
             flex: 1;
             max-width: 200px;
             height: 100%;
-            font-size: var(--base-font-size);
+            font-size: 17px;
             border: none;
             border-left: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
@@ -676,15 +675,16 @@
 
             .container {
                 grid-template-columns: 100%;
-                grid-template-rows: auto auto;
-                height: auto;
+                grid-template-rows: 1fr 1fr;
+                height: calc(100vh - var(--header-height) - var(--footer-height));
             }
 
             .soal,
             .jawaban {
-                height: auto;
-                max-height: 50vh;
-                padding-bottom: 20px;
+                height: 50%;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
             }
 
             .footer-button button {
@@ -722,6 +722,15 @@
 
             .container {
                 margin-top: var(--header-height);
+                height: calc(100vh - var(--header-height) - var(--footer-height));
+            }
+
+            .soal,
+            .jawaban {
+                height: 50%;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
             }
 
             .footer-button button {
@@ -783,20 +792,20 @@
         @media screen and (orientation: portrait) and (max-width: 768px) {
             .container {
                 grid-template-columns: 100%;
-                grid-template-rows: auto auto;
-                height: auto;
+                grid-template-rows: 1fr 1fr;
+                height: calc(100vh - var(--header-height) - var(--footer-height));
             }
 
             .soal,
             .jawaban {
-                height: auto;
-                max-height: 50vh;
-                padding-bottom: 20px;
+                height: 50%;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
             }
         }
 
         @media screen and (min-width: 993px) {
-
             :root {
                 --base-font-size: 24px;
                 --heading-scale: 1.4;
@@ -857,12 +866,6 @@
 
             .review-option {
                 font-size: calc(var(--base-font-size) * 1.1);
-            }
-
-            .review-option-number {
-                font-size: calc(var(--base-font-size) * 1.1);
-                width: 30px;
-                height: 30px;
             }
 
             .audio-transcript {
@@ -1755,8 +1758,8 @@
             questionListOverlay.style.position = 'fixed';
             questionListOverlay.style.top = '0';
             questionListOverlay.style.left = '0';
-            questionListOverlay.style.width = '100%';
-            questionListOverlay.style.height = '100%';
+            questionListOverlay.style.width = '100vw';
+            questionListOverlay.style.height = '100vh';
             questionListOverlay.style.backgroundColor = 'white';
             questionListOverlay.style.display = 'flex';
             questionListOverlay.style.justifyContent = 'center';
@@ -1764,15 +1767,17 @@
             questionListOverlay.style.zIndex = '10000';
             questionListOverlay.style.overflow = 'auto';
             questionListOverlay.style.boxSizing = 'border-box';
-            questionListOverlay.style.padding = '20px';
+            questionListOverlay.style.padding = '10px';
 
             const questionListContainer = document.createElement('div');
             questionListContainer.style.backgroundColor = 'white';
-            questionListContainer.style.padding = '10px';
+            questionListContainer.style.padding = '20px';
+            questionListContainer.style.paddingBottom = '20px';
             questionListContainer.style.border = 'none';
             questionListContainer.style.width = '100%';
-            questionListContainer.style.maxWidth = '800px';
+            questionListContainer.style.maxWidth = '1000px';
             questionListContainer.style.maxHeight = '90vh';
+            questionListContainer.style.margin = '0 auto';
             questionListContainer.style.overflowY = 'auto';
             questionListContainer.style.display = 'flex';
             questionListContainer.style.flexDirection = 'column';
@@ -1780,13 +1785,17 @@
 
             const sectionsContainer = document.createElement('div');
             sectionsContainer.style.display = 'flex';
-            sectionsContainer.style.gap = '30px';
-            sectionsContainer.style.justifyContent = 'center';
-
-            sectionsContainer.style.flexDirection = 'row';
+            sectionsContainer.style.gap = '10px';
+            sectionsContainer.style.justifyContent = 'space-between';
+            sectionsContainer.style.flexWrap = 'nowrap';
+            sectionsContainer.style.width = '100%';
+            sectionsContainer.style.boxSizing = 'border-box';
 
             const readingSection = document.createElement('div');
             readingSection.style.flex = '1';
+            readingSection.style.minWidth = '280px';
+            readingSection.style.maxWidth = '350px';
+            readingSection.style.order = '1';
 
             const readingTitle = document.createElement('h4');
             readingTitle.textContent = 'Reading (1-20)';
@@ -1797,14 +1806,21 @@
 
             const readingGrid = document.createElement('div');
             readingGrid.style.display = 'grid';
-            readingGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
-            readingGrid.style.gridTemplateRows = 'repeat(4, 1fr)';
-            readingGrid.style.gap = '10px';
+            readingGrid.style.gridTemplateColumns = 'repeat(5, 55px)';
+            readingGrid.style.gridTemplateRows = 'repeat(4, 50px)';
+            readingGrid.style.gap = '8px';
             readingGrid.style.width = '100%';
-            readingGrid.style.justifyItems = 'center';
+            readingGrid.style.justifyContent = 'center';
 
             for (let i = 1; i <= 20; i++) {
                 const questionBtn = createQuestionButton(i);
+                questionBtn.style.width = '55px';
+                questionBtn.style.height = '50px';
+                questionBtn.style.borderRadius = '8px';
+                questionBtn.style.display = 'flex';
+                questionBtn.style.alignItems = 'center';
+                questionBtn.style.justifyContent = 'center';
+                questionBtn.style.boxSizing = 'border-box';
                 readingGrid.appendChild(questionBtn);
             }
 
@@ -1813,6 +1829,9 @@
 
             const listeningSection = document.createElement('div');
             listeningSection.style.flex = '1';
+            listeningSection.style.minWidth = '280px';
+            listeningSection.style.maxWidth = '350px';
+            listeningSection.style.order = '2';
 
             const listeningTitle = document.createElement('h4');
             listeningTitle.textContent = 'Listening (21-40)';
@@ -1823,14 +1842,21 @@
 
             const listeningGrid = document.createElement('div');
             listeningGrid.style.display = 'grid';
-            listeningGrid.style.gridTemplateColumns = 'repeat(5, 1fr)';
-            listeningGrid.style.gridTemplateRows = 'repeat(4, 1fr)';
-            listeningGrid.style.gap = '10px';
+            listeningGrid.style.gridTemplateColumns = 'repeat(5, 55px)';
+            listeningGrid.style.gridTemplateRows = 'repeat(4, 50px)';
+            listeningGrid.style.gap = '8px';
             listeningGrid.style.width = '100%';
-            listeningGrid.style.justifyItems = 'center';
-            
+            listeningGrid.style.justifyContent = 'center';
+
             for (let i = 21; i <= 40; i++) {
                 const questionBtn = createQuestionButton(i);
+                questionBtn.style.width = '55px';
+                questionBtn.style.height = '50px';
+                questionBtn.style.borderRadius = '8px';
+                questionBtn.style.display = 'flex';
+                questionBtn.style.alignItems = 'center';
+                questionBtn.style.justifyContent = 'center';
+                questionBtn.style.boxSizing = 'border-box';
                 listeningGrid.appendChild(questionBtn);
             }
 
@@ -1838,24 +1864,6 @@
             sectionsContainer.appendChild(listeningSection);
 
             questionListContainer.appendChild(sectionsContainer);
-
-            const closeBtn = document.createElement('button');
-            closeBtn.textContent = 'Close';
-            closeBtn.style.display = 'block';
-            closeBtn.style.margin = '20px auto 0';
-            closeBtn.style.padding = '8px 20px';
-            closeBtn.style.backgroundColor = '#6eb0f1';
-            closeBtn.style.color = 'white';
-            closeBtn.style.border = 'none';
-            closeBtn.style.borderRadius = '4px';
-            closeBtn.style.cursor = 'pointer';
-            closeBtn.style.width = '100%';
-            closeBtn.style.maxWidth = '80px';
-            closeBtn.onclick = function () {
-                document.body.removeChild(questionListOverlay);
-            };
-
-            questionListContainer.appendChild(closeBtn);
             questionListOverlay.appendChild(questionListContainer);
             document.body.appendChild(questionListOverlay);
         }
