@@ -87,7 +87,16 @@
             height: calc(100vh - var(--header-height) - var(--footer-height));
         }
 
-        .soal,
+        .soal {
+            padding: 5px;
+            padding-left: 12px;
+            overflow-y: auto;
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            background-color: white;
+            font-size: var(--base-font-size);
+        }
+        
         .jawaban {
             padding: 5px;
             overflow-y: auto;
@@ -1772,6 +1781,7 @@
             const questionListContainer = document.createElement('div');
             questionListContainer.style.backgroundColor = 'white';
             questionListContainer.style.padding = '20px';
+            questionListContainer.style.paddingLeft = '30px';
             questionListContainer.style.paddingBottom = '20px';
             questionListContainer.style.border = 'none';
             questionListContainer.style.width = '100%';
@@ -1998,6 +2008,7 @@
                 overflow-y: auto;
                 z-index: 10000;
                 padding: 20px 0;
+                padding-left: 35px;
             `;
 
             const container = document.createElement('div');
